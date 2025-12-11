@@ -1,3 +1,5 @@
+addpath('path_to_your_folder/Inv_labexp/Lib_exp'); %path for the code
+addpath('path_to_your_folder/Inv_labexp/Data_exp'); %Experiment data
 addpath('/Users/kyuninkim/Downloads');
 addpath('/Users/kyuninkim/Downloads/Pdata_inv_joint')
 addpath('/Users/kyuninkim/Downloads/GA_parameter_2');
