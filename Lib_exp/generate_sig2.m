@@ -1,17 +1,39 @@
-function [candidatesigma]=generate_sig2(currentsigma)
+function candidatesigma = generate_sig2(currentsigma)
+%GENERATE_SIG2 Propose impulse timescale sigma for Metropolis–Hastings MCMC.
+%
+%   candidatesigma = generate_sig2(currentsigma)
+%
+% Purpose
+%   Random-walk proposal for the gas-impulse duration (sigma), constrained
+%   to a physically/plausibly allowed interval using reflective boundaries.
+%   Reflection (rather than clipping) preserves proposal symmetry near the
+%   bounds, which is desirable for Metropolis–Hastings.
+%
+% Input
+%   currentsigma   : current sigma value (s)
+%
+% Output
+%   candidatesigma : proposed sigma value (s), guaranteed within [sigmaMin, sigmaMax]
+%
+% Globals (set in main script)
+%   Stepsize1      : proposal standard deviation for sigma (s)
+%
 
-global Stepsize1 
+% -------------------------------------------------------------------------
 
-candidatesigma=currentsigma+Stepsize1*randn;
+global Stepsize1
 
-%candidatet0=currentt0+stepsize3*randn;
+% --- Input validation (lightweight) ---
+validateattributes(currentsigma, {'numeric'}, {'scalar','real','finite'});
 
-if (candidatesigma<0.005) 
-    candidatesigma=2*0.005-candidatesigma; end
-if (candidatesigma>0.05) 
-    candidatesigma=2*0.05-candidatesigma; end
+% --- Bounds (seconds) ---
+sigmaMin = 0.005;
+sigmaMax = 0.05;
 
+% --- Random-walk proposal ---
+candidatesigma = currentsigma + Stepsize1 * randn();
 
-
+% --- Reflect into bounds ---
+candidatesigma = reflectToBounds(candidatesigma, sigmaMin, sigmaMax);
 
 end
