@@ -1,13 +1,8 @@
 addpath('path_to_your_folder/Inv_labexp/Lib_exp'); %path for the code
 addpath('path_to_your_folder/Inv_labexp/Data_exp'); %Experiment data
-addpath('/Users/kyuninkim/Downloads');
-addpath('/Users/kyuninkim/Downloads/Pdata_inv_joint')
-addpath('/Users/kyuninkim/Downloads/GA_parameter_2');
-addpath('/import/c1/SOLIDEARTH/kkim39/exp_inv_store_50');
-addpath('/import/c1/SOLIDEARTH/kkim39/Lib_exp');
+
 load('Spect_store_50ml_new.mat','f_h');
-addpath('/import/c1/SOLIDEARTH/kkim39/exp_inv_store_100');
-addpath('/Users/kyuninkim/Downloads/Numerical_Simu');
+
 load('spect_store_100_store2.mat','spect_store_100')
 
 filtered_signal_raw=spect_store_100(:,1)';
