@@ -1,5 +1,5 @@
-load('Spect_store_100_store.mat','spect_store_100');
-load('Spect_store_50ml.mat','f_h');
+load('Spect_store_100_figure.mat','spect_store_100');
+load('Spect_store_50_figure.mat','f_h');
 
 load('lsponge_noise.mat','spect_store_lsponge_noise');
 load('Spect_store_dspongy.mat','spect_store_dspongy');
